@@ -1,0 +1,447 @@
+{
+  "info": {
+    "name": "Subnix Project Submission & Review API",
+    "description": "Full Postman Collection for testing the Project Submission and Review Dashboard API (Associate Web Instructor Task).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8090/api/v1",
+      "type": "string"
+    },
+    {
+      "key": "studentToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "mentorToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "submissionId",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "1. Authentication",
+      "item": [
+        {
+          "name": "Student Signup",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "if (jsonData.data && jsonData.data.accessToken) {",
+                  "    pm.collectionVariables.set('studentToken', jsonData.data.accessToken);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fullName\": \"Rahim Ahmed\",\n  \"email\": \"student@subnix.com\",\n  \"password\": \"student123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/signup",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "signup"]
+            }
+          }
+        },
+        {
+          "name": "Student Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "if (jsonData.data && jsonData.data.accessToken) {",
+                  "    pm.collectionVariables.set('studentToken', jsonData.data.accessToken);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"student@subnix.com\",\n  \"password\": \"student123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Mentor Login (Seeded)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "if (jsonData.data && jsonData.data.accessToken) {",
+                  "    pm.collectionVariables.set('mentorToken', jsonData.data.accessToken);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"mentor@subnix.com\",\n  \"password\": \"mentor123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Admin Login (Seeded)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@subnix.com\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Get Current Profile (Me)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{studentToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/auth/me",
+              "host": ["{{baseUrl}}"],
+              "path": ["auth", "me"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Student Submissions",
+      "item": [
+        {
+          "name": "Create Project Submission",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "if (jsonData.data && jsonData.data.id) {",
+                  "    pm.collectionVariables.set('submissionId', jsonData.data.id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{studentToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectName\": \"Full-Stack Analytics Dashboard\",\n  \"repoUrl\": \"https://github.com/rahim/analytics-dashboard\",\n  \"liveLink\": \"https://analytics-dashboard.vercel.app\",\n  \"description\": \"Comprehensive full-stack dashboard featuring real-time charts, role-based access control, and PostgreSQL queries.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/submissions",
+              "host": ["{{baseUrl}}"],
+              "path": ["submissions"]
+            }
+          }
+        },
+        {
+          "name": "Test Duplicate Submission (Expect 409 Conflict)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{studentToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectName\": \"Full-Stack Analytics Dashboard Duplicate\",\n  \"repoUrl\": \"https://github.com/rahim/analytics-dashboard\",\n  \"liveLink\": \"https://analytics-dashboard.vercel.app\",\n  \"description\": \"Testing duplicate detection: this should return a 409 Conflict error because of pending review.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/submissions",
+              "host": ["{{baseUrl}}"],
+              "path": ["submissions"]
+            }
+          }
+        },
+        {
+          "name": "Get My Submissions (Student View)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{studentToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/submissions/my-submissions",
+              "host": ["{{baseUrl}}"],
+              "path": ["submissions", "my-submissions"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Mentor Dashboard & Reviews",
+      "item": [
+        {
+          "name": "Get Aggregated Statistics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{mentorToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/submissions/stats",
+              "host": ["{{baseUrl}}"],
+              "path": ["submissions", "stats"]
+            }
+          }
+        },
+        {
+          "name": "Get All Submissions (Paginated & Filtered)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{mentorToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/submissions?page=1&limit=10&status=ALL&sortBy=createdAt&sortOrder=desc",
+              "host": ["{{baseUrl}}"],
+              "path": ["submissions"],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "status",
+                  "value": "ALL"
+                },
+                {
+                  "key": "sortBy",
+                  "value": "createdAt"
+                },
+                {
+                  "key": "sortOrder",
+                  "value": "desc"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filter Submissions: Only Pending",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{mentorToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/submissions?status=PENDING&page=1&limit=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["submissions"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "PENDING"
+                },
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filter Submissions: Search by Keyword",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{mentorToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/submissions?search=analytics",
+              "host": ["{{baseUrl}}"],
+              "path": ["submissions"],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "analytics"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Single Submission by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{mentorToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/submissions/{{submissionId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["submissions", "{{submissionId}}"]
+            }
+          }
+        },
+        {
+          "name": "Mentor Action: Approve Submission",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{mentorToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"APPROVED\",\n  \"feedback\": \"Excellent project! Clean TypeScript types, well-documented README, and responsive UI.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/submissions/{{submissionId}}/review",
+              "host": ["{{baseUrl}}"],
+              "path": ["submissions", "{{submissionId}}", "review"]
+            }
+          }
+        },
+        {
+          "name": "Mentor Action: Reject Submission",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{mentorToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"REJECTED\",\n  \"feedback\": \"Please resolve the database connection timeout and fix the broken live deployment link before resubmitting.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/submissions/{{submissionId}}/review",
+              "host": ["{{baseUrl}}"],
+              "path": ["submissions", "{{submissionId}}", "review"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
