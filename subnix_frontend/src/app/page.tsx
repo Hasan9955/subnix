@@ -17,12 +17,11 @@ import {
   Database,
   Terminal,
   Zap,
-  Clock,
   Sparkles,
-  ExternalLink,
-  Github,
-  AlertTriangle,
   FileCheck,
+  Shield,
+  UserCheck,
+  Cpu,
 } from "lucide-react";
 
 export default function HomePage() {
@@ -43,7 +42,7 @@ export default function HomePage() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold uppercase tracking-wider mb-8 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-blue-600 animate-ping" />
-            Associate Web Instructor Assessment • Full-Stack Feature
+            Next-Generation Code Review &amp; Evaluation Platform
           </div>
 
           {/* Headline */}
@@ -56,7 +55,7 @@ export default function HomePage() {
 
           {/* Subtitle */}
           <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto mb-10">
-            A production-ready platform built with <strong>Next.js 15, TypeScript, TailwindCSS, Express.js</strong>, and <strong>PostgreSQL via Prisma ORM</strong>. Featuring JWT-based Role-Based Access Control, defensive duplicate prevention, and server-side paginated review queues.
+            The premier code evaluation and project handoff ecosystem designed for developer bootcamps, university cohorts, and engineering teams. Deliver structured mentor feedback, eliminate duplicate submissions, and track developer progress in real time.
           </p>
 
           {/* Action Buttons */}
@@ -91,14 +90,14 @@ export default function HomePage() {
                 </div>
                 <div className="px-4 py-1 rounded-md bg-white border border-slate-200 text-xs text-slate-500 font-mono flex items-center gap-2 max-w-xs w-full justify-center shadow-xs">
                   <Lock className="w-3 h-3 text-emerald-600" />
-                  subnix.portal/dashboard/evaluations
+                  subnix.io/dashboard/evaluations
                 </div>
                 <div className="text-xs text-slate-400 font-medium hidden sm:block">
                   Live Preview
                 </div>
               </div>
 
-              {/* Generated Hero Preview Image */}
+              {/* Hero Preview Image */}
               <div className="relative aspect-[16/9] w-full bg-slate-50">
                 <Image
                   src="/hero-preview.jpg"
@@ -127,8 +126,8 @@ export default function HomePage() {
               <BarChart3 className="w-4 h-4" />
             </div>
             <div>
-              <div className="text-xs font-bold text-slate-800">Server-Side Pagination</div>
-              <div className="text-[10px] text-slate-500">O(log N) indexed queries</div>
+              <div className="text-xs font-bold text-slate-800">Real-Time Evaluation Queue</div>
+              <div className="text-[10px] text-slate-500">Instant mentor cache synchronization</div>
             </div>
           </div>
 
@@ -137,21 +136,21 @@ export default function HomePage() {
               <Zap className="w-4 h-4" />
             </div>
             <div>
-              <div className="text-xs font-bold text-slate-800">Spam Rate-Limiting</div>
-              <div className="text-[10px] text-slate-500">Strict 5 submissions / hour</div>
+              <div className="text-xs font-bold text-slate-800">Spam Protection</div>
+              <div className="text-[10px] text-slate-500">Strict rate-limiting enabled</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. LIVE DATABASE METRICS BAR */}
-      <section className="border-y border-slate-200 bg-white py-10">
+      {/* 3. PLATFORM ACTIVITY & SUBMISSION METRICS */}
+      <section id="metrics" className="border-y border-slate-200 bg-white py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
             <div className="flex items-center gap-2">
               <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
               <span className="text-xs font-bold text-slate-700 uppercase tracking-wider">
-                Live PostgreSQL Metrics (Neon Serverless)
+                Platform Activity &amp; Live Evaluation Metrics
               </span>
             </div>
             <Link
@@ -191,18 +190,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. EVALUATOR QUICK-TEST SANDBOX */}
+      {/* 4. INTERACTIVE SANDBOX DEMO ENVIRONMENT */}
       <section className="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden">
           <div className="max-w-2xl relative z-10">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-semibold mb-4 border border-blue-400/30">
-              <Sparkles className="w-3.5 h-3.5" /> For Hiring Evaluators &amp; Mentors
+              <Sparkles className="w-3.5 h-3.5" /> Interactive Sandbox Environment
             </span>
             <h2 className="text-2xl sm:text-3xl font-black tracking-tight mb-3">
-              One-Click Pre-Seeded Testing Credentials
+              Explore Subnix with Pre-Configured Demo Accounts
             </h2>
             <p className="text-slate-300 text-sm leading-relaxed mb-6">
-              The database has been seeded with administrator and lead mentor credentials so you can verify the mentor evaluation flow without manual setup.
+              Experience the platform from either perspective: explore the Mentor review suite or test the developer submission workflow with our demo environments.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-4 mb-8">
@@ -240,13 +239,13 @@ export default function HomePage() {
             <div className="flex flex-wrap items-center gap-4">
               <Link href="/auth/login">
                 <Button className="bg-blue-500 hover:bg-blue-600 text-white gap-2">
-                  Go to Login Screen (with Quick-Fill)
+                  Launch Demo Sign In (Quick-Fill)
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
               <Link href="/auth/signup">
                 <Button variant="ghost" className="text-slate-300 hover:text-white hover:bg-slate-800">
-                  Or register as a new Student
+                  Or register as a new Developer
                 </Button>
               </Link>
             </div>
@@ -254,12 +253,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. DUAL WORKFLOW EXPLANATION (Student vs Mentor) */}
+      {/* 5. DUAL WORKFLOW EXPLANATION */}
       <section className="py-16 sm:py-24 bg-slate-100/60 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
-              Two Tailored Experiences in One Platform
+              Two Tailored Experiences in One Unified Platform
             </h2>
             <p className="text-slate-600 mt-3 text-base">
               Each user persona has dedicated views, defensive validation, and role-based permissions.
@@ -274,7 +273,7 @@ export default function HomePage() {
                   <Code2 className="w-6 h-6" />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-3">
-                  1. Student Submission Portal
+                  1. Developer Submission Portal
                 </h3>
                 <p className="text-slate-600 text-sm leading-relaxed mb-6">
                   Designed for frictionless project handoffs while enforcing defensive code quality standards and preventing automated abuse.
@@ -310,7 +309,7 @@ export default function HomePage() {
 
               <Link href="/submit">
                 <Button className="w-full gap-2">
-                  Test Student Form
+                  Submit a Project
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
@@ -359,7 +358,7 @@ export default function HomePage() {
 
               <Link href="/dashboard">
                 <Button variant="outline" className="w-full gap-2 border-purple-300 text-purple-700 hover:bg-purple-50">
-                  Test Mentor Dashboard
+                  Open Mentor Dashboard
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
@@ -368,17 +367,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. TECHNICAL STACK & PEDAGOGICAL ALIGNMENT (Part 2 Videos) */}
-      <section className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 6. ENTERPRISE ARCHITECTURE & RELIABILITY */}
+      <section id="architecture" className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-14">
           <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">
-            Architecture Blueprint
+            Enterprise Architecture
           </span>
           <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight mt-1">
-            Engineered as Video Teaching Material
+            Engineered for Reliability, Speed &amp; Integrity
           </h2>
           <p className="text-slate-600 mt-2 text-sm">
-            Every layer of this codebase maps directly to the Associate Web Instructor video topics.
+            Built with modern full-stack engineering standards designed to handle thousands of concurrent submissions with zero data anomalies.
           </p>
         </div>
 
@@ -388,10 +387,10 @@ export default function HomePage() {
               <Lock className="w-5 h-5" />
             </div>
             <h4 className="font-bold text-slate-900 mb-1">
-              Topic 1C &amp; 2A: AuthN vs AuthZ (RBAC)
+              Role-Based Access Control (RBAC)
             </h4>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Stateless JWT verification separates identity check from route authorization. Guards verify whether user is a Student or Mentor before status updates.
+              Stateless JWT authentication paired with granular route guards. Enforces strict role checks between Developers, Mentors, and Administrators.
             </p>
           </div>
 
@@ -400,10 +399,10 @@ export default function HomePage() {
               <Database className="w-5 h-5" />
             </div>
             <h4 className="font-bold text-slate-900 mb-1">
-              Topic 2B: Prisma Relational Modeling
+              Relational Data Integrity with Prisma
             </h4>
             <p className="text-xs text-slate-500 leading-relaxed">
-              One-to-many relations between Users, Submissions, and Reviews modeled in PostgreSQL with composite indexing for duplicate checks.
+              Fully typed PostgreSQL schema modeling relations between developers, project submissions, and review audits with automated referential constraints.
             </p>
           </div>
 
@@ -412,10 +411,10 @@ export default function HomePage() {
               <FileCheck className="w-5 h-5" />
             </div>
             <h4 className="font-bold text-slate-900 mb-1">
-              Topic 2D: Defensive Form Validation
+              Defensive Form Validation
             </h4>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Zod schemas sanitize URLs and project descriptions, catching malformed input before execution and surfacing feedback clearly.
+              Multi-layer Zod schemas validate Git repository URLs and project descriptions, catching malformed input before execution and surfacing feedback clearly.
             </p>
           </div>
 
@@ -424,10 +423,10 @@ export default function HomePage() {
               <BarChart3 className="w-5 h-5" />
             </div>
             <h4 className="font-bold text-slate-900 mb-1">
-              Topic 1B: The Architecture of Caching
+              High-Performance Aggregations
             </h4>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Demonstrates why high-traffic platforms cache aggregated dashboard metrics rather than querying full database counts on every page view.
+              Concurrent PostgreSQL aggregations compute real-time platform metrics and approval rates with minimal database round-trip overhead.
             </p>
           </div>
 
@@ -436,47 +435,26 @@ export default function HomePage() {
               <Zap className="w-5 h-5" />
             </div>
             <h4 className="font-bold text-slate-900 mb-1">
-              Topic 1A: The N+1 Query Problem
+              Anti-Duplicate Guard &amp; Rate Limits
             </h4>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Demonstrates how Prisma&apos;s <code>include: student</code> performs single batch join queries instead of issuing N queries in a loop.
+              Composite database indexing and IP/User rate-limiting prevent duplicate submissions and automated spam while preserving resubmission capability.
             </p>
           </div>
 
           <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-blue-400 transition-colors">
             <div className="w-10 h-10 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center mb-4">
-              <Terminal className="w-5 h-5" />
+              <Cpu className="w-5 h-5" />
             </div>
             <h4 className="font-bold text-slate-900 mb-1">
-              Topic 1D: Next.js Rendering Strategies
+              Next.js 15 &amp; RTK Query Engine
             </h4>
             <p className="text-xs text-slate-500 leading-relaxed">
-              Server components for optimized data delivery combined with client components for interactive Redux forms and dynamic modals.
+              Combines optimized server-side rendering for data delivery with client-side Redux Toolkit Query cache invalidation for reactive review updates.
             </p>
           </div>
         </div>
       </section>
-
-      {/* 7. FOOTER */}
-      <footer className="border-t border-slate-200 bg-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-xs">
-              S
-            </div>
-            <span className="text-sm font-bold text-slate-900">Subnix Evaluation Portal</span>
-          </div>
-          <div className="flex items-center gap-6 text-xs text-slate-500">
-            <Link href="/submit" className="hover:text-blue-600">Student Portal</Link>
-            <Link href="/my-submissions" className="hover:text-blue-600">My Submissions</Link>
-            <Link href="/dashboard" className="hover:text-blue-600">Mentor Dashboard</Link>
-            <Link href="/auth/login" className="hover:text-blue-600">Sign In</Link>
-          </div>
-          <div className="text-xs text-slate-400">
-            TypeScript • Next.js • Express • PostgreSQL
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

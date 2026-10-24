@@ -4,6 +4,7 @@ import "./globals.css";
 import "react-toastify/dist/ReactToastify.css";
 import ReduxProvider from "@/redux/provider/ReduxProvider";
 import { Navbar } from "@/components/shared/Navbar";
+import { Footer } from "@/components/shared/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -11,9 +12,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Subnix — Project Submission & Review Dashboard",
+  title: "Subnix — Continuous Project Evaluation & Review Platform",
   description:
-    "A clean full-stack project submission portal for students and review dashboard for mentors.",
+    "The modern code evaluation platform for developer bootcamps and engineering teams. Deliver structured mentor reviews and track project progress in real time.",
 };
 
 export default function RootLayout({
@@ -30,6 +31,7 @@ export default function RootLayout({
         <ReduxProvider>
           <Navbar />
           <main className="flex-1">{children}</main>
+          <Footer />
         </ReduxProvider>
       </body>
     </html>
